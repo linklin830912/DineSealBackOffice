@@ -4,7 +4,8 @@ import BackOfficeHeader from './back-office-header';
 import BackOfficeContent from './back-office-content';
 export default function BackOfficePage() {
     return (
-        <div className='bg-gray-500 w-[100vw] h-[100vh] flex justify-center items-center'>
+        
+        <div className='bg-gray-500 w-[100vw] h-[100vh] flex justify-center items-center relative'>            
             <BackOfficeContainer
                 contentComponent={<BackOfficeContent />}
                 headerComponent={<BackOfficeHeader/>}

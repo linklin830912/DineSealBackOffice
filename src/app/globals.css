@@ -7,18 +7,21 @@
   --fontMainColor: #5d5d5d;
   --fontSecondary0Color: #FFFFFF;
   --fontSecondary1Color: #3538F5;
-  --fontMainHoverColor: #708ED2;
+  --hoverfontMainColor: #FFFFFF;
 
   --fontSecondary0HoverColor: #FFFFFF;
   --fontSecondary1HoverColor: #3538F5;
 
-  --main-background-color: #FFFFFF;
+  --mainBackground0Color: #FFFFFF;
+  --mainBackground1Color: #F7F8FA;;
+  --subBackgroundColor: #2121217D;
+
   --mainSvgPath0Color: #4867C1;
   --mainSvgPath1Color: #FFFFFF;
-  --mainButton0Color: #E6EAF1;
-;
-  --mainButton1Color: #3538F5;
-  --mainButton1SecondaryColor: #DBECFD;
+  --mainButton0Color: #c6c6c6;
+  --hoverMainButton0Color: #515151b8;
+  --mainButton1Color: #E6EAF1;
+  --hoverMainButton1Color:#8899B8B8;
 
   --pageBackgroundColor: #FFFFFF;
   --pageBackgroundSecondary0Color: #15313db0;

@@ -7,5 +7,6 @@ export type Restaurant = {
     dishesImages: string[];
     gameAvailable: string[];
     mediaLink: string;
-    restaurantLink: string;
+    restaurantLink: string;     
+    restaurantThemeSettingsId: string
 };

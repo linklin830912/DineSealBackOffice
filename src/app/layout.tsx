@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ThemeSettingsProvider } from "@/context/theme-settings-context";
-import { MemoryLaneStateProvider } from "@/context/memory-lane-state-context";
 import { TouchScreenProvider } from "@/context/touch-screen-context";
 
 // const geistSans = localFont({
@@ -41,11 +40,9 @@ export default function RootLayout({
         className={"antialiased"}>
         
           <ThemeSettingsProvider>
-            <MemoryLaneStateProvider>
                 <TouchScreenProvider>
                     {children}
-                </TouchScreenProvider>            
-            </MemoryLaneStateProvider>
+                </TouchScreenProvider>
           </ThemeSettingsProvider>
         
       </body>

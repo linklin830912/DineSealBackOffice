@@ -18,17 +18,19 @@ export default {
         fontSecondary0Color: 'var(--fontSecondary0Color)',
         fontSecondary1Color: 'var(--fontSecondary1Color)',
         fontMainPaceholderColor: 'var(--fontMainPaceholderColor)',
-        fontMainHoverColor: 'var(--fontMainHoverColor)',
+        hoverfontMainColor: 'var(--hoverfontMainColor)',
         fontSecondary0HoverColor: 'var(--fontSecondary0HoverColor)',
         fontSecondary1HoverColor: 'var(--fontSecondary1HoverColor)',
 
-        mainBackgroundLinear0Color: 'var(--mainBackgroundLinear0Color)',
-        mainBackgroundLinear1Color: 'var(--mainBackgroundLinear1Color)',
+        mainBackground0Color: 'var(--mainBackground0Color)',
+        mainBackground1Color: 'var(--mainBackground1Color)',
+        subBackgroundColor: 'var(--subBackgroundColor)',        
         mainSvgPath0Color: 'var(--mainSvgPath0Color)',
         mainSvgPath1Color: 'var(--mainSvgPath1Color)',
         mainButton0Color: 'var(--mainButton0Color)',
+        hoverMainButton0Color:'var(--hoverMainButton0Color)',
         mainButton1Color: 'var(--mainButton1Color)',
-        mainButton1SecondaryColor: 'var(--mainButton1SecondaryColor)',
+        hoverMainButton1Color:'var(--hoverMainButton1Color)',
 
         pageBackgroundColor: 'var(--pageBackgroundColor)',
         pageBackgroundSecondary0Color: 'var(--pageBackgroundSecondary0Color)',
@@ -44,6 +46,12 @@ export default {
         'h4': '0.8rem', 
         'h5': '0.72rem',
         'h6': '0.6rem',
+        'hx1': '1.25rem',
+        'hx2': '0.9375rem',
+        'hx3': '0.625rem',
+        'hx4': '0.4rem', 
+        'hx5': '0.36rem',
+        'hx6': '0.3rem',
       },
       fontFamily: {
         dmsans: ['DM Sans', 'sans-serif']
@@ -58,5 +66,7 @@ export default {
       '2xl': '1536px',
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 } satisfies Config;

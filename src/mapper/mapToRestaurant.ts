@@ -2,7 +2,7 @@ import { Restaurant } from "@/model/Restaurant";
 
 export function mapToRestaurant(data: any){
     let restaurants = [] as Restaurant[];
-    
+    console.log(data)
     data.restaurant.forEach((x: any) => {
       restaurants.push(  {
         address: x.restaurant_location,
@@ -14,6 +14,7 @@ export function mapToRestaurant(data: any){
         mediaLink: x.media_link,
         gameAvailable: x.game_available,
         dishesImages: x.dishes_image,
+        restaurantThemeSettingsId: x.restaurant_theme_settings_id
     })});
     return restaurants;
 };

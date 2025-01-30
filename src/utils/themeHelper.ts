@@ -1,65 +1,49 @@
-import { ColorThemeSettingsEnum } from "@/model/RestaurantThemeSettings";
+import { ColorThemeSettingsEnum } from "@/model/enum/ColorThemeSettingsEnum";
+import { ColorThemeSettings } from "@/model/theme/ColorThemeSettings";
 
-export function themeSwitch(themeEnum: ColorThemeSettingsEnum): ThemeSettings { 
-    
+export function themeSwitch(themeEnum: ColorThemeSettingsEnum): ColorThemeSettings {    
     
     switch (themeEnum) { 
         case ColorThemeSettingsEnum.DARK:
             return {
-                color: {
-                    font: {
-                        fontMainColor: "#051A57",
-                        fontSecondary0Color: "#FFFFFF",
-                        fontSecondary1Color: "#3538F5",
-                        fontMainHoverColor: "#051A57",
-                        fontSecondary0HoverColor: "#FFFFFF",
-                        fontSecondary1HoverColor: "#3538F5"
-                    },
+                pages: {
                     main: {
-                        backgroundLinear0Color: "#6C9FD3",
-                        backgroundLinear1Color: "#F5F5F5",
-                        svgPath0Color: "#4867C1",
-                        svgPath1Color: "#FFFFFF",
-                        button0Color: "#051A57",
-                        button1Color: "#3538F5",
-                        button1SecondaryColor: "#DBECFD",
+                        backgroundColor0: "#fcfcd7",
+                        backgroundColor1: "white",
+                        buttonColor0: "white",
+                        buttonColor1: "yellow",
+                        svgFillColor0: "yellow",
+                        svgFillColor1: "yellow",
+                        svgStrokeColor0: "yellow",
+                        svgStrokeColor1: "yellow",
+                        fontColor0: "black",           
+                        fontSize0: "7px",
+                        fontSize1: "10px",
                     },
-                    page: {
-                        backgroundColor: "#FFFFFF",
-                        backgroundSecondary0Color: "#1E1E1E",
-                        backgroundSecondary1Color: "#DBECFD",
-                        svgPath0Color: "#8BB8E8",
-                        button0Color: "#B7D9FC"
-                    }
+                    editor: {},
+                    history: {}
                 }
             };
         default: // LIGHT
             return {
-                color: {
-                    font: {
-                        fontMainColor: "#051A57",
-                        fontSecondary0Color: "#FFFFFF",
-                        fontSecondary1Color: "#3538F5",
-                        fontMainHoverColor: "#051A57",
-                        fontSecondary0HoverColor: "#FFFFFF",
-                        fontSecondary1HoverColor: "#3538F5"
-                    },
+                pages: {
                     main: {
-                        backgroundLinear0Color: "#6C9FD3",
-                        backgroundLinear1Color: "#F5F5F5",
-                        svgPath0Color: "#4867C1",
-                        svgPath1Color: "#FFFFFF",
-                        button0Color: "#051A57",
-                        button1Color: "#3538F5",
-                        button1SecondaryColor: "#DBECFD",
+                        backgroundColor0: "#bfb793",
+                        backgroundColor1: "#ffed9c",
+                        buttonColor0: "#a18300",
+                        buttonColor1: "#d1ab02",
+
+                        svgFillColor0: "#bfaf21",
+                        svgFillColor1: "#fff700",
+                        svgStrokeColor0: "#a18300",
+                        svgStrokeColor1: "white",
+
+                        fontColor0: "white",           
+                        fontSize0: "7px",
+                        fontSize1: "10px",
                     },
-                    page: {
-                        backgroundColor: "#FFFFFF",
-                        backgroundSecondary0Color: "#1E1E1E",
-                        backgroundSecondary1Color: "#DBECFD",
-                        svgPath0Color: "#8BB8E8",
-                        button0Color: "#B7D9FC"
-                    }
+                    editor: {},
+                    history: {}
                 }
             };
     }
