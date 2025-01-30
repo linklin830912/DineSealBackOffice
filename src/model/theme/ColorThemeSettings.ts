@@ -9,9 +9,7 @@ export type ColorThemeSettings = {
             svgFillColor1: string,
             svgStrokeColor0: string,
             svgStrokeColor1: string,
-            fontColor0: string,            
-            fontSize0: string,
-            fontSize1: string,
+            fontColor0: string,
         },
         editor: {},
         history: {}

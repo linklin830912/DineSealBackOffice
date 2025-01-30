@@ -26,6 +26,7 @@ export const BackOfficSettigsProvider: React.FC<{ children: ReactNode }> = ({ ch
             fontSize: FontsSizeSettingsEnum.SMALL,
             svgL: SVGTypesSettingsEnum.STAR,
             svgS: SVGTypesSettingsEnum.STAR,
+            startText: 'Start !'
         },
         seoSettings: {}
   });

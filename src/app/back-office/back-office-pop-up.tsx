@@ -58,7 +58,7 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
             Object.entries(FontsTypeSettingsEnum)
             .filter(([key, value]) => typeof value === "number")
                 .map(([key, value], index) => (
-                <FontTypeButton kkey={key} value={value} index={index} handleClick={() => {
+                    <FontTypeButton kkey={key} key={ index} value={value} index={index} handleClick={() => {
                         setRestaurantSettings({
                             ...restaurantSettings,
                             theme: { ...restaurantSettings.theme, fontType: Number(value) }
@@ -93,9 +93,9 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
         {props.stage===BackOfficeThemeEditorEnum.SVG_S && <div className="w-full flex flex-row flex-wrap justify-around items-center">{
             Object.entries(SVGTypesSettingsEnum)
             .filter(([key, value]) => typeof value === "number")
-            .map(([key, value]) => (
+            .map(([key, value], index) => (
                 <button className="w-[50px] mb-1 text-h5 text-fontMainColor bg-mainButton1Color hover:bg-hoverMainButton1Color rounded-xl mr-1 p-1"
-                    key={value} value={value}
+                    key={index} value={value}
                     onClick={() => {
                         setRestaurantSettings({
                             ...restaurantSettings,

@@ -19,6 +19,7 @@ export function themeSwitch(themeEnum: ColorThemeSettingsEnum): ColorThemeSettin
                         fontColor0: "black",           
                         fontSize0: "7px",
                         fontSize1: "10px",
+                        fontFamily: "Arial"
                     },
                     editor: {},
                     history: {}
@@ -41,6 +42,7 @@ export function themeSwitch(themeEnum: ColorThemeSettingsEnum): ColorThemeSettin
                         fontColor0: "white",           
                         fontSize0: "7px",
                         fontSize1: "10px",
+                        fontFamily: "Arial"
                     },
                     editor: {},
                     history: {}

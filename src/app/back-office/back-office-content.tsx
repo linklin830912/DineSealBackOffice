@@ -44,9 +44,9 @@ export default function BackOfficeContent() {
             </select>
         </div>
         
-        <div className='grid grid-flow-col grid-cols-2 p-5 gap-8 text-h5 text-fontMainColor'>         
-            <div className="shadow-[4px_0_0px_0] shadow-mainButton0Color">
-                <div className="w-full flex flex-row text-h5 mb-3 text-fontMainColor justify-between bg-mainBackground0Color rounded-t-[20px]">
+        <div className='grid grid-flow-col grid-cols-[fit fit] p-5 gap-5 text-h5 text-fontMainColor'>         
+            <div className="shadow-[4px_0_0px_0] shadow-mainButton0Color pr-5">
+                <div className="w-full flex flex-row text-h5 mb-7 text-fontMainColor justify-between bg-mainBackground0Color rounded-t-[20px]">
                     <button className="w-full px-2 py-1 text-center shadow-[0_3px_0_0] shadow-mainButton0Color hover:shadow-hoverMainButton0Color"
                         onClick={()=>setStage(BackOfficeEditStageEnum.MAIN)}>
                         Main
@@ -64,13 +64,8 @@ export default function BackOfficeContent() {
                 {stage === BackOfficeEditStageEnum.EDITOR && <BackOfficeEditorPageSection />}
                 {stage === BackOfficeEditStageEnum.HISTORY && <BackOfficeHistoryPageSection />}
             </div>        
-            <div >
+            <div className="flex justify-center items-center px-5">
                 <BackOfficeUISection/>
-                {/* <iframe
-                src="https://dine-seal-kappa.vercel.app/memory-lane"
-                width="100%"
-                height="500px"
-                ></iframe> */}
             </div>
         </div>
         

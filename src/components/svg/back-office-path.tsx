@@ -1,4 +1,5 @@
 import { useBackOfficSettigs } from "@/context/back-office-settings-context";
+import { switchToFontSize } from "@/model/enum/FontsSizeSettingsEnum";
 import { SVGTypesSettingsEnum } from "@/model/enum/SVGTypesSettingsEnum";
 import { themeSwitch } from "@/utils/themeHelper";
 import React from "react";
@@ -9,10 +10,9 @@ export default function BackOfficePath() {
     const fillColor1 = main.svgFillColor1;
     const strokeColor0 = main.svgStrokeColor0;
     const strokeColor1 = main.svgStrokeColor1;
-    return <svg viewBox="0 0 1200 454.47" height={"100%"} transform="translate(88.15 0)" fill="none" strokeLinecap="round" stroke={strokeColor1} >
+    return <svg viewBox="0 0 1200 454.47" height={"100%"} transform="translate(50 0)" fill="none" strokeLinecap="round" stroke={strokeColor1} >
         <path strokeWidth="20" strokeOpacity={0.27} fillOpacity={0} d="M124.4,165.65c41.78-2.22,122.35,0,160.06,0,64.44,0,100.44,0,121,58.22,16.36,103,98.44,154.88,180.91,155.51" transform="translate(0 0.16)"/>
         <path strokeWidth="20" strokeOpacity={0.27} fillOpacity={0} d="M618.38,384.73c83.37.63,167.15-51.09,183.86-155.22C818.84,126,901.78,74.64,984.72,75" transform="translate(0 0.16)" />
-
         
         {restaurantSettings.theme.svgL === SVGTypesSettingsEnum.CIRCLE &&
             <circle fill={fillColor0} strokeOpacity={0} fillOpacity={1} cx="104.42" cy="150.37" r="102.7" />}
@@ -22,7 +22,9 @@ export default function BackOfficePath() {
         {restaurantSettings.theme.svgL === SVGTypesSettingsEnum.STAR_8 &&
             <path fill={fillColor0} strokeOpacity={0} fillOpacity={1} id="star80" d="M96.92,52.58a11,11,0,0,1,15,0l21.4,19.84a11,11,0,0,0,7.06,2.93l29.17,1.1A11,11,0,0,1,180.09,87l1.1,29.16a11,11,0,0,0,2.93,7.07L204,144.66a11,11,0,0,1,0,15L184.12,181a11,11,0,0,0-2.93,7.07l-1.1,29.16a11,11,0,0,1-10.58,10.58l-29.17,1.1a11,11,0,0,0-7.06,2.93l-21.4,19.84a11,11,0,0,1-15,0l-21.4-19.84a11,11,0,0,0-7.07-2.93l-29.16-1.1a11,11,0,0,1-10.58-10.58l-1.1-29.16A11,11,0,0,0,24.68,181L4.84,159.62a11,11,0,0,1,0-15l19.84-21.4a11,11,0,0,0,2.93-7.07L28.71,87A11,11,0,0,1,39.29,76.45l29.16-1.1a11,11,0,0,0,7.07-2.93Z" transform="translate(0 0.16)"/>
         }
-        <text fill={fillColor1} strokeOpacity={0} fillOpacity={1}  transform="translate(88.15 164.96)">START!</text>
+        <text fill={fillColor1} strokeOpacity={0} fillOpacity={1} textAnchor="middle"
+            fontSize={switchToFontSize(restaurantSettings.theme.fontSize).fontSize2} fontWeight="bold"
+            dominantBaseline="middle" transform="translate(105 158)">{ restaurantSettings.theme.startText}</text>
         
         {restaurantSettings.theme.svgS === SVGTypesSettingsEnum.CIRCLE &&
             <circle fill={fillColor1} strokeOpacity={0} fillOpacity={1} cx="601.07" cy="381.54" r="70.72" />

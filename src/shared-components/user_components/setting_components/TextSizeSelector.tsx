@@ -22,7 +22,7 @@ const TextSizeSelector = (props:TextSizeSelectorProps) => {
       </label>
       
       <label className="flex flex-row text-h6 justify-center items-center mr-2">
-        <input
+        <input className="mr-1"
           type="radio"
           name="size"
           checked={props.fontSize === FontsSizeSettingsEnum.MEDIUM}
@@ -31,7 +31,7 @@ const TextSizeSelector = (props:TextSizeSelectorProps) => {
         <span >Medium</span>
       </label>
       <label className="flex flex-row text-h6 justify-center items-center mr-2">
-        <input
+        <input className="mr-1"
           type="radio"
           name="size"
           checked={props.fontSize === FontsSizeSettingsEnum.LARGE}
@@ -40,7 +40,7 @@ const TextSizeSelector = (props:TextSizeSelectorProps) => {
         <span >Large</span>
       </label>
       <label className="flex flex-row text-h6 justify-center items-center mr-2">
-        <input
+        <input className="mr-1"
           type="radio"
           name="size"
           checked={props.fontSize  === FontsSizeSettingsEnum.EXTRA_LARGE}

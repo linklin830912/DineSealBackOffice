@@ -14,3 +14,8 @@ export const fontList = [
   { name: 'Georgia', fontFamily: 'Georgia, serif' },
   { name: 'Courier New', fontFamily: 'Courier New, monospace' },
 ];
+
+export function switchToFontFamily(font: FontsTypeSettingsEnum) { 
+  
+  return fontList[font-1].fontFamily;
+}

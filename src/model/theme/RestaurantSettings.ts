@@ -6,6 +6,7 @@ export type RestaurantSettings = {
         fontSize: number,
         svgL: number,
         svgS: number,
+        startText: string,
     },
     seoSettings: {}
 };

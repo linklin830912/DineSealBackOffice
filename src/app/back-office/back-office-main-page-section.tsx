@@ -4,8 +4,7 @@ import { useBackOfficSettigs } from "@/context/back-office-settings-context";
 import { getEnumName } from "@/utils/enumHelper";
 import { ColorThemeSettingsEnum } from "@/model/enum/ColorThemeSettingsEnum";
 import { FontsTypeSettingsEnum } from "@/model/enum/FontsTypeSettingsEnum";
-import { FontsSizeSettingsEnum } from "@/model/enum/FontsSizeSettingsEnum";
-import { LuShapes } from "react-icons/lu";
+import { RiText } from "react-icons/ri";
 import { FaFont } from "react-icons/fa";
 import { SVGTypesSettingsEnum } from "@/model/enum/SVGTypesSettingsEnum";
 import { MdImagesearchRoller } from "react-icons/md";
@@ -24,7 +23,7 @@ export enum BackOfficeThemeEditorEnum {
 export default function BackOfficeMainPageSection() { 
     const { restaurantSettings, setRestaurantSettings } =  useBackOfficSettigs();
     const [stage, setStage] = useState<BackOfficeThemeEditorEnum>();
-
+    
     return (
         <div className='w-full flex flex-col'>
             <div className="w-full flex flex-row justify-start items-center mb-3">
@@ -42,7 +41,6 @@ export default function BackOfficeMainPageSection() {
                 </div>                
                 <div className="flex flex-row min-w-[150px] justify-center items-center bg-mainButton1Color rounded-[50px] p-1">
                     <TextSizeSelector fontSize={restaurantSettings.theme.fontSize} setFontSize={(fontSize) => {
-                        //setStage(BackOfficeThemeEditorEnum.FONT_SIZE)
                         setRestaurantSettings({...restaurantSettings, theme: {...restaurantSettings.theme, fontSize: fontSize}})
                     }}/>
                 </div>
@@ -67,25 +65,31 @@ export default function BackOfficeMainPageSection() {
             </div> */}
 
             <div className="w-full flex flex-row justify-start items-center mb-3">
-                <div className='mr-5'>
-                    <MdStarBorder size={20} />                    
+                <div className='mr-5 flex flex-row items-center'>
+                    <MdStarBorder size={20} />  <span className="ml-1 text-h6">(L)  </span>                
                 </div> 
                 <button className="min-w-[150px] bg-mainButton1Color hover:bg-hoverMainButton1Color rounded-[50px] p-1"
                     onClick={
-                        () => setStage(BackOfficeThemeEditorEnum.SVG_L)
-                        
+                        () => setStage(BackOfficeThemeEditorEnum.SVG_L)               
                     }
                     >{getEnumName(SVGTypesSettingsEnum, restaurantSettings.theme.svgL || 1)}</button>    
             </div>
             
             <div className="w-full flex flex-row justify-start items-center mb-3">
-                <div className='mr-5'>
-                    <TiStarburstOutline size={20} />
+                <div className='mr-5 flex flex-row items-center'>
+                    <TiStarburstOutline size={20} />  <span className="ml-1 text-h6">(S)  </span>  
                 </div> 
                 <button className="min-w-[150px] bg-mainButton1Color hover:bg-hoverMainButton1Color rounded-[50px] p-1"
                     onClick={() => setStage(BackOfficeThemeEditorEnum.SVG_S)}
                     >{getEnumName(SVGTypesSettingsEnum, restaurantSettings.theme.svgS || 1)}</button>    
-            </div> 
+            </div>
+            <div className="w-full flex flex-row justify-start items-center mb-3">
+                <RiText size={20} />
+                <input className="min-w-[150px] bg-mainButton1Color hover:bg-hoverMainButton1Color rounded-[50px] px-3 py-1"
+                    type="text" placeholder="START!" value={restaurantSettings.theme.startText} onChange={(e) => {
+                        setRestaurantSettings({...restaurantSettings, theme: {...restaurantSettings.theme, startText: e.target.value}})
+                     }} />
+            </div>
             {stage !== undefined && <BackOfficePopup stage={stage} handleClose={()=>setStage(undefined)}/>}
         </div>
     );

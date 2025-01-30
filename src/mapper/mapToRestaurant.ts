@@ -2,7 +2,6 @@ import { Restaurant } from "@/model/Restaurant";
 
 export function mapToRestaurant(data: any){
     let restaurants = [] as Restaurant[];
-    console.log(data)
     data.restaurant.forEach((x: any) => {
       restaurants.push(  {
         address: x.restaurant_location,
