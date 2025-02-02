@@ -9,12 +9,14 @@ import { mapToRestaurantThemeSettings } from "@/mapper/mapToRestaurantThemeSetti
 import BackOfficeUISection from "./back-office-ui-section";
 import BackOfficeMainPageSection from "./back-office-main-page-section";
 import BackOfficeEditorPageSection from "./back-office-editor-page-section";
-import BackOfficeHistoryPageSection from "./back-office-history-page-section";
 
-enum BackOfficeEditStageEnum { 
+export enum BackOfficeEditStageEnum { 
     MAIN,
-    EDITOR,
-    HISTORY
+    HISTORY,
+    EDITOR_0,
+    EDITOR_1,
+    EDITOR_2,
+    EDITOR_3,
 }
 export default function BackOfficeContent() { 
    
@@ -46,26 +48,30 @@ export default function BackOfficeContent() {
         
         <div className='grid grid-flow-col grid-cols-[fit fit] p-5 gap-5 text-h5 text-fontMainColor'>         
             <div className="shadow-[4px_0_0px_0] shadow-mainButton0Color pr-5">
-                <div className="w-full flex flex-row text-h5 mb-7 text-fontMainColor justify-between bg-mainBackground0Color rounded-t-[20px]">
-                    <button className="w-full px-2 py-1 text-center shadow-[0_3px_0_0] shadow-mainButton0Color hover:shadow-hoverMainButton0Color"
+                <div className="w-full flex flex-row text-h5 text-fontMainColor justify-between bg-mainBackground0Color rounded-t-[15px]">
+                    <button className="w-full px-3 pt-1 text-center text-h6 shadow-[0_3px_0_0] shadow-mainButton0Color hover:shadow-hoverMainButton0Color"
                         onClick={()=>setStage(BackOfficeEditStageEnum.MAIN)}>
                         Main
                     </button>
-                    <button className="w-full px-2 py-1 text-center shadow-[0_3px_0_0] shadow-mainButton0Color hover:shadow-hoverMainButton0Color"
-                        onClick={()=>setStage(BackOfficeEditStageEnum.EDITOR)}>
+                    <button className="w-full px-3 pt-1 text-center text-h6 shadow-[0_3px_0_0] shadow-mainButton0Color hover:shadow-hoverMainButton0Color"
+                        onClick={()=>setStage(BackOfficeEditStageEnum.EDITOR_0)}>
                         Editor
                     </button>
-                    <button className="w-full px-2 py-1 text-center shadow-[0_3px_0_0] shadow-mainButton0Color hover:shadow-hoverMainButton0Color"
-                        onClick={() => setStage(BackOfficeEditStageEnum.HISTORY)}>
-                        History
-                    </button>
                 </div>  
-                {stage === BackOfficeEditStageEnum.MAIN && <BackOfficeMainPageSection />}
-                {stage === BackOfficeEditStageEnum.EDITOR && <BackOfficeEditorPageSection />}
-                {stage === BackOfficeEditStageEnum.HISTORY && <BackOfficeHistoryPageSection />}
+                <div className="max-h-[50vh] p-5 overflow-auto">
+                    {(stage === BackOfficeEditStageEnum.MAIN
+                        ||stage === BackOfficeEditStageEnum.HISTORY)
+                        && <BackOfficeMainPageSection onSectionFocus={setStage}/>}
+                    {(stage === BackOfficeEditStageEnum.EDITOR_0
+                        || stage === BackOfficeEditStageEnum.EDITOR_1
+                        || stage === BackOfficeEditStageEnum.EDITOR_2
+                        || stage === BackOfficeEditStageEnum.EDITOR_3)
+                                && <BackOfficeEditorPageSection onSectionFocus={setStage}/>}
+                </div>
+                
             </div>        
             <div className="flex justify-center items-center px-5">
-                <BackOfficeUISection/>
+                <BackOfficeUISection stage={stage}/>
             </div>
         </div>
         

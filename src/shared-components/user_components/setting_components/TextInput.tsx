@@ -1,5 +1,6 @@
 import React from "react";
 import { RxText } from "react-icons/rx";
+
 import '../../utils/editorStyles.css';
 import ComponentIcon from "./ComponentIcon";
 import FontSelector from "./FontSelector";

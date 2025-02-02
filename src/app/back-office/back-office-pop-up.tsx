@@ -11,6 +11,8 @@ import ColorThemeButton from "@/components/button/color-theme-button";
 import FontTypeButton from "@/components/button/font-type-button";
 import FontSizeButton from "@/components/button/font-size-button";
 import SVGTypeButton from "@/components/button/svg-type-button";
+import { DisplayArrayTypeEnum } from "@/model/enum/DisplayArrayTypeEnum";
+import DisplayArrayButton from "@/components/button/display-array-button";
 
 type BackOfficeOfficeProps = {
     stage: BackOfficeThemeEditorEnum
@@ -36,6 +38,9 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
             case BackOfficeThemeEditorEnum.SVG_S:
                 setTitle("SVG L");
                 break;
+            case BackOfficeThemeEditorEnum.ARRAY:
+                setTitle("Paginate");
+                break;
             default:
                 break;
         }
@@ -49,7 +54,7 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
                 <ColorThemeButton kkey={key} value={value} handleClick={() => {
                         setRestaurantSettings({
                             ...restaurantSettings,
-                            theme: { ...restaurantSettings.theme, colorThemeEnum: Number(value) }
+                            main: { ...restaurantSettings.main, colorThemeEnum: Number(value) }
                         })
                         props.handleClose();
                     }}/>
@@ -61,7 +66,7 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
                     <FontTypeButton kkey={key} key={ index} value={value} index={index} handleClick={() => {
                         setRestaurantSettings({
                             ...restaurantSettings,
-                            theme: { ...restaurantSettings.theme, fontType: Number(value) }
+                            main: { ...restaurantSettings.main, fontType: Number(value) }
                         })
                         props.handleClose();
                     }}/>
@@ -73,7 +78,7 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
                 <FontSizeButton kkey={key} value={value} handleClick={() => {
                         setRestaurantSettings({
                             ...restaurantSettings,
-                            theme: { ...restaurantSettings.theme, fontSize: Number(value) }
+                            main: { ...restaurantSettings.main, fontSize: Number(value) }
                         })
                         props.handleClose();
                     }}/>
@@ -85,7 +90,7 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
                 <SVGTypeButton kkey={key} value={value} handleClick={() => {
                         setRestaurantSettings({
                             ...restaurantSettings,
-                            theme: { ...restaurantSettings.theme, svgL: Number(value) }
+                            main: { ...restaurantSettings.main, svgL: Number(value) }
                         })
                         props.handleClose();
                     }} />
@@ -99,12 +104,24 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
                     onClick={() => {
                         setRestaurantSettings({
                             ...restaurantSettings,
-                            theme: { ...restaurantSettings.theme, svgS: Number(value) }
+                            main: { ...restaurantSettings.main, svgS: Number(value) }
                         })
                         props.handleClose();
                     }}>
                     <SwapSVGIcon type={Number(value)}/>
                 </button>
-        ))}</div>}                    
+            ))}</div>}
+        {props.stage===BackOfficeThemeEditorEnum.ARRAY && <div className="w-full flex flex-col min-w-[250px]">{
+            Object.entries(DisplayArrayTypeEnum)
+            .filter(([key, value]) => typeof value === "number")
+                .map(([key, value], index) => (
+                    <DisplayArrayButton kkey={key} key={ index} value={value} handleClick={() => {
+                        setRestaurantSettings({
+                            ...restaurantSettings,
+                            history: { ...restaurantSettings.history, displayArrayType: Number(value) }
+                        })
+                        props.handleClose();
+                    }}/>
+            ))}</div>}
         </PopupSection>
 }
