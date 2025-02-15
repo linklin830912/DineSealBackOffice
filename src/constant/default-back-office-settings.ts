@@ -3,6 +3,7 @@ import { DisplayArrayTypeEnum } from "@/model/enum/DisplayArrayTypeEnum";
 import { FontsSizeSettingsEnum } from "@/model/enum/FontsSizeSettingsEnum";
 import { FontsTypeSettingsEnum } from "@/model/enum/FontsTypeSettingsEnum";
 import { SVGTypesSettingsEnum } from "@/model/enum/SVGTypesSettingsEnum";
+import { RestaurantThemeSettings } from "@/model/theme/RestaurantThemeSettings";
 
 export const DEFAULT_RESTAURANT_THEME_SETTINGS = {
     main: {
@@ -28,6 +29,7 @@ export const DEFAULT_RESTAURANT_THEME_SETTINGS = {
         haveTags: true,
         tags: [""] as string[],
         haveAppreciations: true,
+        appreciationsLabel:"APPRECTIONS",
         appreciationsText: "What do you want to say to us?",
         noticeLabel: "WE MIGHT USE THIS INTO FOR OUR SOCIAL MEDIA",
         haveNotice: true,
@@ -41,4 +43,4 @@ export const DEFAULT_RESTAURANT_THEME_SETTINGS = {
         haveCaption: true,
         haveDate: true
     }
-};
+} as RestaurantThemeSettings;

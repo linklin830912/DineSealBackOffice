@@ -60,10 +60,6 @@ export default function BackOfficeEditorPageSection(props: BackOfficeEditorPageS
 
             <BackOfficeSectionCard onSectionFocus={() => props.onSectionFocus(BackOfficeEditStageEnum.EDITOR_2)}>
                 <>
-                    <TextInput placeholder="FEEDBACK" value={restaurantThemeSettings.editor.feedbackLabel} setValue={(e) => {
-                        setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, feedbackLabel: e.target.value } });
-                    }} ><MdOutlineTitle size={20} />
-                    </TextInput>
                     <HaveInput 
                         isChecked={restaurantThemeSettings.editor.haveRating}
                         onCheckedChange={(e) => { 
