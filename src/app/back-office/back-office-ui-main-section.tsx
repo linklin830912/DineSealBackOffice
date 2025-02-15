@@ -14,23 +14,20 @@ type BackOfficeUIMainSectionProps = {
     stage: BackOfficeEditStageEnum
 }
 export default function BackOfficeUIMainSection(props: BackOfficeUIMainSectionProps) { 
-    const {restaurantSettings} = useBackOfficSettigs();
-    const { pages: { main} } = themeSwitch(restaurantSettings.main.colorThemeEnum);
-    const buttonColor0 = main.buttonColor0;
-    const buttonColor1 = main.buttonColor1;
-    const fontColor0 = main.fontColor0;
+    const {restaurantThemeSettings} = useBackOfficSettigs();
+    const colorThemeSettings = themeSwitch(restaurantThemeSettings.main.colorThemeEnum);
     return <div className='relative w-full h-full flex flex-col'>
         <div className='w-full px-3 pt-3 pb-2 flex flex-row justify-between items-center'
             style={{
-                color: fontColor0,
-                fontSize: restaurantSettings.main.fontSize,
+                color: colorThemeSettings.fontColor0,
+                fontSize: restaurantThemeSettings.main.fontSize,
             }}>
             <div className='w-[19px]'><PrevPageArrowButton /></div>
             <div className='w-full text-center'
                 style={{
-                    color: main.fontColor0,
-                    fontSize: switchToFontSize(restaurantSettings.main.fontSize).fontSize0,
-                    fontFamily: switchToFontFamily(restaurantSettings.main.fontType)
+                    color: colorThemeSettings.fontColor0,
+                    fontSize: switchToFontSize(restaurantThemeSettings.main.fontSize).fontSize0,
+                    fontFamily: switchToFontFamily(restaurantThemeSettings.main.fontType)
                 }}
             >MEMORY LANE</div>
         </div>
@@ -42,19 +39,19 @@ export default function BackOfficeUIMainSection(props: BackOfficeUIMainSectionPr
         <div className='absolute top-[85%] w-full px-3 pt-3 pb-2 flex flex-row justify-center items-center mb-2'>
             <div className='rounded-[50px] px-2 py-1 mr-1'
                 style={{
-                    background: buttonColor0,
-                    color: fontColor0,
-                    fontSize: switchToFontSize(restaurantSettings.main.fontSize).fontSize0,
-                    fontFamily: switchToFontFamily(restaurantSettings.main.fontType)
+                    background: colorThemeSettings.buttonColor0,
+                    color: colorThemeSettings.fontColor0,
+                    fontSize: switchToFontSize(restaurantThemeSettings.main.fontSize).fontSize0,
+                    fontFamily: switchToFontFamily(restaurantThemeSettings.main.fontType)
                 }}>MEMORIES: 1
             </div>
             <div className='rounded-[50px] px-2 py-1 flex flex-row'
                 style={{
-                    background: buttonColor1,
-                    color: fontColor0,
-                    fontSize: switchToFontSize(restaurantSettings.main.fontSize).fontSize1,
+                    background: colorThemeSettings.buttonColor1,
+                    color: colorThemeSettings.fontColor0,
+                    fontSize: switchToFontSize(restaurantThemeSettings.main.fontSize).fontSize1,
                     fontWeight: 'bold',
-                    fontFamily: switchToFontFamily(restaurantSettings.main.fontType)
+                    fontFamily: switchToFontFamily(restaurantThemeSettings.main.fontType)
                 }}>
                 <div className='w-[13px] mr-1'><BadgeIcon /></div>
                 1

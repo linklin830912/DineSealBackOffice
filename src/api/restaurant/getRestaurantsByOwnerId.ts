@@ -8,7 +8,6 @@ import { Restaurant } from '@/model/Restaurant';
 export const GET_RESTAURANTS_BY_OWNER_ID = gql`
 query getRestaurantsByOwnerId($ownerId: uuid = "") {
   restaurant(where: {restaurant_owner_id: {_eq: $ownerId}}, order_by: {restaurant_id: asc}) {
-    restaurant_theme_settings_id
     restaurant_name
     restaurant_id
     restaurant_location
@@ -22,7 +21,7 @@ query getRestaurantsByOwnerId($ownerId: uuid = "") {
   }
 }`
 
-export function useRestaurantsByEmailAndPassword(email: string, password: string):Restaurant[]{
+export function getRestaurantsByEmailAndPassword(email: string, password: string):Restaurant[]{
   const [restaurants, setRestaurants] = useState<Restaurant[]>([] as Restaurant[]);
   const { data: ownerData } = useQuery(GET_OWNER_BY_EMAIL_PASSWORD, {
           variables: {
@@ -34,6 +33,7 @@ export function useRestaurantsByEmailAndPassword(email: string, password: string
       useEffect(() => {
           if (ownerData) {
               const owner = mapToRestaurantOwner(ownerData);
+              console.log("owner",owner);
               fetchRestaurants({
                   variables: {
                       ownerId: owner.ownerId
@@ -41,8 +41,10 @@ export function useRestaurantsByEmailAndPassword(email: string, password: string
               });
           }
       }, [ownerData]);
-      useEffect(() => {
-          if (restaurantsData) {            
+    
+    useEffect(() => { 
+          if (restaurantsData) {    
+            console.log(restaurantsData);  
               setRestaurants(mapToRestaurant(restaurantsData))
           }
       }, [restaurantsData]);

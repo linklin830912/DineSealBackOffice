@@ -1,14 +1,15 @@
 "use client"
 import React, {  useEffect, useState } from "react";
-import BackOfficeThemeSection from "./back-office-main-page-section";
-import { useLazyQuery } from "@apollo/client";
-import { useRestaurantsByEmailAndPassword } from "@/api/restaurant/getRestaurantsByOwnerId";
-import { GET_RESTAURANT_THEME_SETTINGS_BY_ID } from "@/api/restaurant-theme-settings/getRestaurantTemeSettings";
+import { useLazyQuery, useMutation } from "@apollo/client";
+import { getRestaurantsByEmailAndPassword } from "@/api/restaurant/getRestaurantsByOwnerId";
+import { GET_RESTAURANT_THEME_SETTINGS_BY_RESTAURANT_ID } from "@/api/restaurant-theme-settings/getRestaurantTemeSettings";
 import { useBackOfficSettigs } from "@/context/back-office-settings-context";
-import { mapToRestaurantThemeSettings } from "@/mapper/mapToRestaurantThemeSettings";
+import { isRestaurantThemeSettingsValid, mapToRestaurantThemeSettings } from "@/mapper/mapToRestaurantThemeSettings";
 import BackOfficeUISection from "./back-office-ui-section";
 import BackOfficeMainPageSection from "./back-office-main-page-section";
 import BackOfficeEditorPageSection from "./back-office-editor-page-section";
+import { POST_RESTAURANT_THEME_SETTINGS } from "@/api/restaurant-theme-settings/postRestaurantThemeSettings";
+import { RestaurantThemeSettings } from "@/model/theme/RestaurantThemeSettings";
 
 export enum BackOfficeEditStageEnum { 
     MAIN,
@@ -21,27 +22,45 @@ export enum BackOfficeEditStageEnum {
 export default function BackOfficeContent() { 
    
     const [stage, setStage] = useState<BackOfficeEditStageEnum>(BackOfficeEditStageEnum.MAIN);
-    const { setRestaurantSettings} = useBackOfficSettigs();
-    const restaurants = useRestaurantsByEmailAndPassword("test.owner@email.com", "123456");
-    const [fetchTheme, { data: themeData }] = useLazyQuery(GET_RESTAURANT_THEME_SETTINGS_BY_ID);
+    const { restaurantThemeSettings, selectedRestaurantId, setSelectedRestaurantId} = useBackOfficSettigs();
+    const { setRestaurantThemeSettings} = useBackOfficSettigs();
+    const restaurants = getRestaurantsByEmailAndPassword("test.owner@email.com", "123456");
+    const [fetchTheme, { data: themeData }] = useLazyQuery(GET_RESTAURANT_THEME_SETTINGS_BY_RESTAURANT_ID);
+    const [postRestaurantThemeSettings, { data, loading, error }] = useMutation(POST_RESTAURANT_THEME_SETTINGS);
     const handleSelectRestaurant = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const id = e.target.value;
-        if (id) { 
+        const restaurantId = e.target.value;
+        if (Number(restaurantId)) { 
+            console.log("Number(restaurantId) :", Number(restaurantId))
+            setSelectedRestaurantId(Number(restaurantId));
             fetchTheme({
-                variables:{id: id}
+                variables:{restaurantId: restaurantId}
             })
         }
     };
     useEffect(() => {
-        if (themeData) { 
+        console.log("isRestaurantThemeSettingsValid(themeData): ", isRestaurantThemeSettingsValid(themeData))
+        if (themeData === undefined) return;
+        console.log("themeData: ", themeData)
+        if (isRestaurantThemeSettingsValid(themeData)) {
             const settings = mapToRestaurantThemeSettings(themeData);
-            setRestaurantSettings(settings);
+            setRestaurantThemeSettings(settings as RestaurantThemeSettings);
+        }else if(selectedRestaurantId !== -1){ 
+            // save default theme to initialize
+            try { 
+                console.log("Save: ", selectedRestaurantId);
+                postRestaurantThemeSettings({
+                    variables: {
+                        restaurantId: selectedRestaurantId,
+                        value: restaurantThemeSettings
+                    }
+                });
+            } catch (e) { }            
         }
     },[themeData])
     return <div className="w-full flex flex-col bg-mainBackground1Color">
         <div className="w-full fixed">
             <select onChange={handleSelectRestaurant}>
-                {restaurants.map((restaurant, index) => <option key={index} value={restaurant.restaurantThemeSettingsId}>
+                {restaurants.map((restaurant, index) => <option key={index} value={restaurant.restaurantId}>
                     { restaurant.restaurantName }</option>)}
             </select>
         </div>

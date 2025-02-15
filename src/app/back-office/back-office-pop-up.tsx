@@ -19,7 +19,7 @@ type BackOfficeOfficeProps = {
     handleClose: ()=>void
 };
 export default function BackOfficePopup(props: BackOfficeOfficeProps) { 
-    const { restaurantSettings, setRestaurantSettings } =  useBackOfficSettigs();
+    const { restaurantThemeSettings, setRestaurantThemeSettings } =  useBackOfficSettigs();
     const [title, setTitle] = useState<string>();
     useEffect(() => {
         switch (props.stage) {
@@ -51,10 +51,10 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
             Object.entries(ColorThemeSettingsEnum)
             .filter(([key, value]) => typeof value === "number")
                 .map(([key, value]) => (
-                <ColorThemeButton kkey={key} value={value} handleClick={() => {
-                        setRestaurantSettings({
-                            ...restaurantSettings,
-                            main: { ...restaurantSettings.main, colorThemeEnum: Number(value) }
+                <ColorThemeButton kkey={key} value={value} key={key} handleClick={() => {
+                        setRestaurantThemeSettings({
+                            ...restaurantThemeSettings,
+                            main: { ...restaurantThemeSettings.main, colorThemeEnum: Number(value) }
                         })
                         props.handleClose();
                     }}/>
@@ -64,9 +64,9 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
             .filter(([key, value]) => typeof value === "number")
                 .map(([key, value], index) => (
                     <FontTypeButton kkey={key} key={ index} value={value} index={index} handleClick={() => {
-                        setRestaurantSettings({
-                            ...restaurantSettings,
-                            main: { ...restaurantSettings.main, fontType: Number(value) }
+                        setRestaurantThemeSettings({
+                            ...restaurantThemeSettings,
+                            main: { ...restaurantThemeSettings.main, fontType: Number(value) }
                         })
                         props.handleClose();
                     }}/>
@@ -76,9 +76,9 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
             .filter(([key, value]) => typeof value === "number")
                 .map(([key, value]) => (
                 <FontSizeButton kkey={key} value={value} handleClick={() => {
-                        setRestaurantSettings({
-                            ...restaurantSettings,
-                            main: { ...restaurantSettings.main, fontSize: Number(value) }
+                        setRestaurantThemeSettings({
+                            ...restaurantThemeSettings,
+                            main: { ...restaurantThemeSettings.main, fontSize: Number(value) }
                         })
                         props.handleClose();
                     }}/>
@@ -88,9 +88,9 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
             .filter(([key, value]) => typeof value === "number")
                 .map(([key, value]) => (
                 <SVGTypeButton kkey={key} value={value} handleClick={() => {
-                        setRestaurantSettings({
-                            ...restaurantSettings,
-                            main: { ...restaurantSettings.main, svgL: Number(value) }
+                        setRestaurantThemeSettings({
+                            ...restaurantThemeSettings,
+                            main: { ...restaurantThemeSettings.main, svgL: Number(value) }
                         })
                         props.handleClose();
                     }} />
@@ -102,9 +102,9 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
                 <button className="w-[50px] mb-1 text-h5 text-fontMainColor bg-mainButton1Color hover:bg-hoverMainButton1Color rounded-xl mr-1 p-1"
                     key={index} value={value}
                     onClick={() => {
-                        setRestaurantSettings({
-                            ...restaurantSettings,
-                            main: { ...restaurantSettings.main, svgS: Number(value) }
+                        setRestaurantThemeSettings({
+                            ...restaurantThemeSettings,
+                            main: { ...restaurantThemeSettings.main, svgS: Number(value) }
                         })
                         props.handleClose();
                     }}>
@@ -116,9 +116,9 @@ export default function BackOfficePopup(props: BackOfficeOfficeProps) {
             .filter(([key, value]) => typeof value === "number")
                 .map(([key, value], index) => (
                     <DisplayArrayButton kkey={key} key={ index} value={value} handleClick={() => {
-                        setRestaurantSettings({
-                            ...restaurantSettings,
-                            history: { ...restaurantSettings.history, displayArrayType: Number(value) }
+                        setRestaurantThemeSettings({
+                            ...restaurantThemeSettings,
+                            history: { ...restaurantThemeSettings.history, displayArrayType: Number(value) }
                         })
                         props.handleClose();
                     }}/>

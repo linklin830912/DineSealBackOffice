@@ -1,15 +1,13 @@
 "use client"
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { RestaurantSettings } from '@/model/theme/RestaurantSettings';
-import { SVGTypesSettingsEnum } from '@/model/enum/SVGTypesSettingsEnum';
-import { ColorThemeSettingsEnum } from '@/model/enum/ColorThemeSettingsEnum';
-import { FontsTypeSettingsEnum } from '@/model/enum/FontsTypeSettingsEnum';
-import { FontsSizeSettingsEnum } from '@/model/enum/FontsSizeSettingsEnum';
-import { DisplayArrayTypeEnum } from '@/model/enum/DisplayArrayTypeEnum';
+import { RestaurantThemeSettings } from '@/model/theme/RestaurantThemeSettings';
+import { DEFAULT_RESTAURANT_THEME_SETTINGS } from '@/constant/default-back-office-settings';
 
 interface BackOfficSettigs {
-  restaurantSettings: RestaurantSettings,
-  setRestaurantSettings: (x: RestaurantSettings) =>void
+  restaurantThemeSettings: RestaurantThemeSettings,
+  setRestaurantThemeSettings: (x: RestaurantThemeSettings) => void
+  selectedRestaurantId: number
+  setSelectedRestaurantId: (x: number) => void
 }
 
 // Create the context with an initial empty state
@@ -18,50 +16,15 @@ const BackOfficSettigsContext = createContext<BackOfficSettigs | undefined>(unde
 // Create a provider component
 export const BackOfficSettigsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   
-
-  const [restaurantSettings, setRestaurantSettings] = useState<RestaurantSettings>({
-    main: {
-            colorThemeEnum: ColorThemeSettingsEnum.LIGHT,
-            fontType: FontsTypeSettingsEnum.ARIAL,
-            fontSize: FontsSizeSettingsEnum.SMALL,
-            svgL: SVGTypesSettingsEnum.STAR,
-            svgS: SVGTypesSettingsEnum.STAR,
-            startText: 'START!'
-    },
-    editor: {
-      locationText: "MY RESTAURANT",
-      takePictureDescription: "Take a picture of your meal!",
-      haveTitle: true,
-      titleText: "TITLE",
-      haveCaptions: true,
-      captionsText: "Caption your memory?",
-      feedbackLabel: "FEEDBACK",
-      ratingLabel: "RATING",
-      haveRating: true,
-      tagsLabel: "TAGS",
-      tagsText: "Tag what you eat?",
-      haveTags: true,
-      tags: [""] as string[],
-      haveAppreciations: true,
-      appreciationsText: "What do you want to say to us?",
-      noticeLabel: "WE MIGHT USE THIS INTO FOR OUR SOCIAL MEDIA",
-      haveNotice:true,
-      consentQuestionLabel: "You may be featured on the restaurant's IG account\n Do you consent sharing your username, photo, and feedback?",
-      consentQuestionAgreeLabel: "AGREE",
-      haveConsentQuestion:true
-    },
-    history: {
-      displayArrayType: DisplayArrayTypeEnum.ONE,
-      haveTitle: true,
-      haveCaption: true,
-      haveDate:true
-    }
-  });
+  const [selectedRestaurantId, setSelectedRestaurantId] = useState<number>(-1);
+  const [restaurantThemeSettings, setRestaurantThemeSettings] = useState<RestaurantThemeSettings>(DEFAULT_RESTAURANT_THEME_SETTINGS);
   
   return (
     <BackOfficSettigsContext.Provider value={{
-      restaurantSettings: restaurantSettings,
-      setRestaurantSettings: setRestaurantSettings,
+      restaurantThemeSettings: restaurantThemeSettings,
+      setRestaurantThemeSettings: setRestaurantThemeSettings,
+      selectedRestaurantId: selectedRestaurantId,
+      setSelectedRestaurantId: setSelectedRestaurantId
     }}>
       {children}
     </BackOfficSettigsContext.Provider>

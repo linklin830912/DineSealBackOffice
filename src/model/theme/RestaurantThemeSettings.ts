@@ -1,4 +1,4 @@
-export type RestaurantSettings = {
+export type RestaurantThemeSettings = {
     main: {
         colorThemeEnum: number,
         fontType: number,

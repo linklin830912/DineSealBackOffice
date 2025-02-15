@@ -12,8 +12,7 @@ export function mapToRestaurant(data: any){
         menu: x.menu,
         mediaLink: x.media_link,
         gameAvailable: x.game_available,
-        dishesImages: x.dishes_image,
-        restaurantThemeSettingsId: x.restaurant_theme_settings_id
+        dishesImages: x.dishes_image
     })});
     return restaurants;
 };

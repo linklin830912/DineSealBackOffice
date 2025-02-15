@@ -6,29 +6,36 @@ export function themeSwitch(themeEnum: ColorThemeSettingsEnum): ColorThemeSettin
     switch (themeEnum) { 
         case ColorThemeSettingsEnum.DARK:
             return {
-                pages: {
-                    main: {
-                        backgroundColor0: "#fcfcd7",
-                        backgroundColor1: "white",
-                        backgroundColor2: "#ffffff",
-                        buttonColor0: "white",
-                        buttonColor1: "yellow",
-                        buttonColor2: "#7a7761",
-                        svgFillColor0: "yellow",
-                        svgFillColor1: "yellow",
-                        svgStrokeColor0: "yellow",
-                        svgStrokeColor1: "yellow",
-                        fontColor0: "black",
-                        fontColor1: "black",
-                    },
-                    editor: {},
-                    history: {}
-                }
-            };
+                        backgroundColor0: "#001433",
+                        backgroundColor1: "#3d5f94",
+                        backgroundColor2: "#d6e6ff",
+                        buttonColor0: "#4675bd",
+                        buttonColor1: "#134694",
+                        buttonColor2: "#46628c",
+                        svgFillColor0: "#97bffc",
+                        svgFillColor1: "#6b97db",
+                        svgStrokeColor0: "#132c54",
+                        svgStrokeColor1: "#799fdb",
+                        fontColor0: "#ffffff",
+                        fontColor1: "#001433",
+                    };
+        case ColorThemeSettingsEnum.DREAM:
+            return {
+                        backgroundColor0: "#f6bdff",
+                        backgroundColor1: "#a0dce8",
+                        backgroundColor2: "#fffef0",
+                        buttonColor0: "#84c4c1",
+                        buttonColor1: "#b33fe0",
+                        buttonColor2: "#dedcb1",
+                        svgFillColor0: "#f9edff",
+                        svgFillColor1: "#ccb3f5",
+                        svgStrokeColor0: "#653d94",
+                        svgStrokeColor1: "#b2a5c7",
+                        fontColor0: "#ffffff",
+                        fontColor1: "#183236",
+                    };
         default: // LIGHT
             return {
-                pages: {
-                    main: {
                         backgroundColor0: "#bfb793",
                         backgroundColor1: "#ffed9c",
                         backgroundColor2: "#ffffff",
@@ -43,10 +50,6 @@ export function themeSwitch(themeEnum: ColorThemeSettingsEnum): ColorThemeSettin
 
                         fontColor0: "#ffffff",
                         fontColor1: "#403c22",
-                    },
-                    editor: {},
-                    history: {}
-                }
-            };
+                    };
     }
 }

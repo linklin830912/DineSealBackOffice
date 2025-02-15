@@ -12,14 +12,12 @@ type BackOfficeUISectionProps = {
     stage: BackOfficeEditStageEnum
 }
 export default function BackOfficeUISection(props: BackOfficeUISectionProps) { 
-    const {restaurantSettings} = useBackOfficSettigs();
-    const { pages: { main, editor, history} } = themeSwitch(restaurantSettings.main.colorThemeEnum);
-    const backgroundColor0 = main.backgroundColor0;
-    const backgroundColor1 = main.backgroundColor1;
+    const {restaurantThemeSettings} = useBackOfficSettigs();
+    const colorThemeSettings = themeSwitch(restaurantThemeSettings.main.colorThemeEnum);
 
     return <div className='w-[180px] h-[390px] rounded-lg flex flex-col justify-between items-center'
         style={{
-                background: `linear-gradient(to bottom, ${backgroundColor0}, ${backgroundColor1})`
+                background: `linear-gradient(to bottom, ${colorThemeSettings.backgroundColor0}, ${colorThemeSettings.backgroundColor1})`
             }}
     >
         {(props.stage === BackOfficeEditStageEnum.MAIN

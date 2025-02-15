@@ -18,40 +18,40 @@ type BackOfficeEditorPageSectionProps = {
     onSectionFocus: (stage: BackOfficeEditStageEnum) => void;
 }
 export default function BackOfficeEditorPageSection(props: BackOfficeEditorPageSectionProps) { 
-    const { restaurantSettings, setRestaurantSettings } = useBackOfficSettigs();
+    const { restaurantThemeSettings, setRestaurantThemeSettings } = useBackOfficSettigs();
     return (
         <div className="flex flex-col justify-center">
             <BackOfficeSectionCard onSectionFocus={()=>props.onSectionFocus(BackOfficeEditStageEnum.EDITOR_0)}>
                 <>
-                    <TextInput placeholder="LOCATION" value={restaurantSettings.editor.locationText} setValue={(e) => {
-                        setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, locationText: e.target.value } });
+                    <TextInput placeholder="LOCATION" value={restaurantThemeSettings.editor.locationText} setValue={(e) => {
+                        setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, locationText: e.target.value } });
                     }} ><FaLocationDot size={20} /></TextInput>
                     
-                    <TextInput placeholder="DESCRIPTION" value={restaurantSettings.editor.takePictureDescription} setValue={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, takePictureDescription: e.target.value } });
+                    <TextInput placeholder="DESCRIPTION" value={restaurantThemeSettings.editor.takePictureDescription} setValue={(e) => {
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, takePictureDescription: e.target.value } });
                         }} ><MdOutlineSubtitles size={20} />
                     </TextInput>
                 </>
             </BackOfficeSectionCard>
             <BackOfficeSectionCard onSectionFocus={() => props.onSectionFocus(BackOfficeEditStageEnum.EDITOR_1)}>
                 <>
-                    <HaveTextInput placeholder={"TITLE"} value={restaurantSettings.editor.titleText}
+                    <HaveTextInput placeholder={"TITLE"} value={restaurantThemeSettings.editor.titleText}
                         setValue={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, titleText: e.target.value } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, titleText: e.target.value } });
                         } }
-                        isChecked={restaurantSettings.editor.haveTitle}
+                        isChecked={restaurantThemeSettings.editor.haveTitle}
                         onCheckedChange={(e) => { 
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, haveTitle: e.currentTarget.checked } });   
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, haveTitle: e.currentTarget.checked } });   
                         } }>
                         <MdOutlineTitle size={20} />
                     </HaveTextInput>
-                    <HaveTextInput placeholder={"CAPTION"} value={restaurantSettings.editor.captionsText}
+                    <HaveTextInput placeholder={"CAPTION"} value={restaurantThemeSettings.editor.captionsText}
                         setValue={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, captionsText: e.target.value } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, captionsText: e.target.value } });
                         } }
-                        isChecked={restaurantSettings.editor.haveCaptions}
+                        isChecked={restaurantThemeSettings.editor.haveCaptions}
                         onCheckedChange={(e) => { 
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, haveCaptions: e.currentTarget.checked } });   
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, haveCaptions: e.currentTarget.checked } });   
                         } }>
                         <MdOutlineSubtitles size={20} />
                     </HaveTextInput>
@@ -60,38 +60,38 @@ export default function BackOfficeEditorPageSection(props: BackOfficeEditorPageS
 
             <BackOfficeSectionCard onSectionFocus={() => props.onSectionFocus(BackOfficeEditStageEnum.EDITOR_2)}>
                 <>
-                    <TextInput placeholder="FEEDBACK" value={restaurantSettings.editor.feedbackLabel} setValue={(e) => {
-                        setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, feedbackLabel: e.target.value } });
+                    <TextInput placeholder="FEEDBACK" value={restaurantThemeSettings.editor.feedbackLabel} setValue={(e) => {
+                        setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, feedbackLabel: e.target.value } });
                     }} ><MdOutlineTitle size={20} />
                     </TextInput>
                     <HaveInput 
-                        isChecked={restaurantSettings.editor.haveRating}
+                        isChecked={restaurantThemeSettings.editor.haveRating}
                         onCheckedChange={(e) => { 
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, haveRating: e.currentTarget.checked } });   
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, haveRating: e.currentTarget.checked } });   
                         } }>
                         <TiStarHalfOutline size={20} />
                     </HaveInput>
-                    <HaveAddTextInput placeholder={"TAG"} values={restaurantSettings.editor.tags}
+                    <HaveAddTextInput placeholder={"TAG"} values={restaurantThemeSettings.editor.tags}
                         setValues={(tags) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, tags: [...tags] } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, tags: [...tags] } });
                         }}
-                        isChecked={restaurantSettings.editor.haveTags}
+                        isChecked={restaurantThemeSettings.editor.haveTags}
                         onCheckedChange={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, haveTags: e.currentTarget.checked } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, haveTags: e.currentTarget.checked } });
                         }}
-                        inputPlaceholder={restaurantSettings.editor.tagsText}
+                        inputPlaceholder={restaurantThemeSettings.editor.tagsText}
                         setInputPlaceholder={(e) => { 
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, tagsText: e.target.value } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, tagsText: e.target.value } });
                         }}>
                         <FaTag size={20} />
                     </HaveAddTextInput>
-                    <HaveTextInput placeholder={"APPRECIATIONS"} value={restaurantSettings.editor.appreciationsText}
+                    <HaveTextInput placeholder={"APPRECIATIONS"} value={restaurantThemeSettings.editor.appreciationsText}
                         setValue={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, appreciationsText: e.target.value } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, appreciationsText: e.target.value } });
                         } }
-                        isChecked={restaurantSettings.editor.haveAppreciations}
+                        isChecked={restaurantThemeSettings.editor.haveAppreciations}
                         onCheckedChange={(e) => { 
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, haveAppreciations: e.currentTarget.checked } });   
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, haveAppreciations: e.currentTarget.checked } });   
                         } }>
                         <MdOutlineSubtitles size={20} />
                     </HaveTextInput>
@@ -100,25 +100,25 @@ export default function BackOfficeEditorPageSection(props: BackOfficeEditorPageS
             
             <BackOfficeSectionCard onSectionFocus={() => props.onSectionFocus(BackOfficeEditStageEnum.EDITOR_3)}>
                 <>
-                    <HaveTextInput placeholder={"NOTIFICATION"} value={restaurantSettings.editor.noticeLabel}
+                    <HaveTextInput placeholder={"NOTIFICATION"} value={restaurantThemeSettings.editor.noticeLabel}
                         setValue={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, noticeLabel: e.target.value } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, noticeLabel: e.target.value } });
                         } }
-                        isChecked={restaurantSettings.editor.haveNotice}
+                        isChecked={restaurantThemeSettings.editor.haveNotice}
                         onCheckedChange={(e) => { 
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, haveNotice: e.currentTarget.checked } });   
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, haveNotice: e.currentTarget.checked } });   
                         } }>
                         <IoAlertCircle  size={20} />
                     </HaveTextInput>
-                    <TextInput placeholder={""} value={restaurantSettings.editor.consentQuestionLabel}
+                    <TextInput placeholder={""} value={restaurantThemeSettings.editor.consentQuestionLabel}
                         setValue={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, consentQuestionLabel: e.target.value } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, consentQuestionLabel: e.target.value } });
                         } } >
                         <MdOutlineSubtitles size={20} />
                     </TextInput>
-                    <TextInput placeholder={""} value={restaurantSettings.editor.consentQuestionAgreeLabel}
+                    <TextInput placeholder={""} value={restaurantThemeSettings.editor.consentQuestionAgreeLabel}
                         setValue={(e) => {
-                            setRestaurantSettings({ ...restaurantSettings, editor: { ...restaurantSettings.editor, consentQuestionAgreeLabel: e.target.value } });
+                            setRestaurantThemeSettings({ ...restaurantThemeSettings, editor: { ...restaurantThemeSettings.editor, consentQuestionAgreeLabel: e.target.value } });
                         } } >
                         <FaCheckSquare size={20} />
                     </TextInput>
