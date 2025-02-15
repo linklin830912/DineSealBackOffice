@@ -44,7 +44,7 @@ export function getRestaurantsByEmailAndPassword(email: string, password: string
     
     useEffect(() => { 
           if (restaurantsData) {    
-            console.log(restaurantsData);  
+            console.log("!!!restaurantsData", restaurantsData);  
               setRestaurants(mapToRestaurant(restaurantsData))
           }
       }, [restaurantsData]);
